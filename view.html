@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color IOT App</title>
+  <style>
+    body {
+      transition: backgroundColor 500ms;
+    }
+
+    h1 {
+      margin: 0;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      font-size: 20vmin;
+      text-shadow: 0 0 5px #fff;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+
+<body>
+  <h1></h1>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+    var heading = document.querySelector('h1');
+    socket.on('apply', cssColor => {
+      document.body.style.backgroundColor = cssColor;
+      heading.textContent = cssColor;
+    })
+  </script>
+</body>
+
+</html>
